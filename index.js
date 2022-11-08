@@ -80,7 +80,13 @@ const HospitalType = new GraphQLObjectType({
     description: 'This represents a hospital with patients',
     fields: () => ({
         id: { type: GraphQLNonNull(GraphQLInt) },
-        name: { type: GraphQLNonNull(GraphQLString) }
+        name: { type: GraphQLNonNull(GraphQLString) },
+        patients: {
+            type: new GraphQLList(PatientType),
+            resolve: (hospital) => {
+                return patients.filter(patient => patient.hospitalId === hospital.id)
+            }
+        }
     })
 })
 
@@ -92,7 +98,28 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(PatientType),
             description: 'List of All Patients',
             resolve: () => patients
-        }
+        },
+        patient: {
+            type: PatientType,
+            description: 'One Single Patient',
+            args: {
+                id: { type: GraphQLInt }
+            },
+            resolve: (parents, args) => patients.find(patient => patient.id === args.id)
+        },
+        hospitals: {
+            type: new GraphQLList(HospitalType),
+            description: 'List of All Hospitals',
+            resolve: () => hospitals
+        },
+        hospital: {
+            type: HospitalType,
+            description: 'One Single Hospital',
+            args: {
+                id: { type: GraphQLInt }
+            },
+            resolve: (parents, args) => hospitals.find(hospital => hospital.id === args.id)
+        },
     })
 })
 

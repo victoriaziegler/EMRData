@@ -1,13 +1,21 @@
 {
-  "name": "bekhealthapp",
+  "name": "emrdata",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victoriaziegler/EMRData.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victoriaziegler/EMRData/issues"
+  },
+  "homepage": "https://github.com/victoriaziegler/EMRData#readme",
   "dependencies": {
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",

@@ -11,4 +11,4 @@ This project is able to show all patients in the database, and get specific pati
 After cloning the repository from gitlab to your local computer, please use the following command to run the project. 
 * npm run DevStart
 
-The graphiql interface can be accessed at http://localhost:8000/graphql? to test and manipulate the data.
+The graphiql interface can be accessed at http://localhost:8000/graphql to test and manipulate the data.
